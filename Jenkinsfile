@@ -9,7 +9,7 @@ pipeline {
 	stages {
 	    stage('Checkout') {
 	        steps {
-			https://github.com/samikshabokde14/samiksha.git			       
+			git 'https://github.com/samikshabokde14/samiksha.git'			       
 		      }}
 		stage('Build') {
 	           steps {
