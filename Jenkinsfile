@@ -21,16 +21,11 @@ pipeline {
 			script {
 			 if ( env.ENVIRONMENT == 'QA' ){
         	sh 'cp target/samiksha.war /home/samiksha/Downloads/apache-tomcat-9.0.93/webapps'
-
-        	echo "deployment has been done on QA!"
+                echo "deployment has been done on QA!"
 			 }
 			else if ( env.ENVIRONMENT == 'UAT' ){
     		sh 'cp target/samiksha.war /home/samiksha/Downloads/apache-tomcat-9.0.93/webapps'
-
-    		echo "deployment has been done on UAT!"
-			}
-			echo "deployment has been done!"
-			fi
+                echo "deployment has been done on UAT!"
 			
 			}}}	
-}}
+}}}
