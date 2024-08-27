@@ -10,7 +10,7 @@ pipeline {
 	    stage('Checkout') {
 	        steps {
 			https://github.com/samikshabokde14/samiksha.git			       
-		      }
+		      }}
 		stage('Build') {
 	           steps {
 			  sh 'mvn install'
