@@ -1,31 +1,18 @@
 pipeline {
-	agent any
-	
-	parameters {
-  choice choices: ['DEV', 'QA', 'UAT'], name: 'ENVIRONMENT'
-}
-
-
+	agent{
+	label 'slave-label'
+	}
 	stages {
 	    stage('Checkout') {
 	        steps {
-			git 'https://github.com/samikshabokde14/samiksha.git'			       
+			checkout scm			       
 		      }}
 		stage('Build') {
 	           steps {
-			  sh 'mvn install'
-
+			  sh 'JAVA_HOME=/home/grras/slavedir/jdk-11.0.24 /home/grras/slavedir/apache-maven-3.9.8/bin/mvn install'
 	                 }}
 		stage('Deployment'){
 		    steps {
-			script {
-			 if ( env.ENVIRONMENT == 'QA' ){
-        	sh 'cp target/samiksha.war /home/samiksha/Downloads/apache-tomcat-9.0.93/webapps'
-                echo "deployment has been done on QA!"
-			 }
-			else if ( env.ENVIRONMENT == 'UAT' ){
-    		sh 'cp target/samiksha.war /home/samiksha/Downloads/apache-tomcat-9.0.93/webapps'
-                echo "deployment has been done on UAT!"
-			
-			}}}	
-}}}
+			sh 'cp target/samiksha.war /home/grras/slavedir/apache-tomcat-9.0.93/webapps'
+			}}	
+}}
